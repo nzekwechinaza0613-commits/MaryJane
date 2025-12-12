@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	fmt.Println("Please input your firstname")
@@ -9,7 +11,7 @@ func main() {
 	for _, char := range Firstname {
 		if (char >= 'A' && char <= 'Z') || (char >= 'a' && char <= 'z') == true {
 		} else {
-			fmt.Println("Error; Only Alphabets are allowed.")
+			fmt.Println("ERROR; ONLY ALPHABETS ARE ALLOWED❗❗❗")
 			return
 		}
 	}
@@ -19,19 +21,19 @@ func main() {
 	for _, char := range Lastname {
 		if (char >= 'A' && char <= 'Z') || (char >= 'a' && char <= 'z') == true {
 		} else {
-			fmt.Println("Error; Only Alphabets are allowed.")
+			fmt.Println("ERROR; ONLY ALPHABETS ARE ALLOWED❗❗❗.")
 			return
 		}
 	}
-	fmt.Println("Password Required")
+	fmt.Println("Admin Password Required")
 	var Password string
 	fmt.Scanln(&Password)
 	if Password != "12345" {
-		fmt.Println("Password is incorrect")
+		fmt.Println("OH SNAP❌ Password is incorrect")
 		return
 	}
 
-	fmt.Printf("SPECIAL GUEST DETECTED! Hello %s %s!,  Welcome to Heaven. \n", Firstname, Lastname)
+	fmt.Printf("SPECIAL GUEST DETECTED! Hello %s %s!,WELCOME TO 𝗛 𝗘 𝗔 𝗩 𝗘 𝗡 👑🕊️ \n", Firstname, Lastname)
 
 }
 
