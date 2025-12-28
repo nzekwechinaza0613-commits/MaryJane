@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	fmt.Println("Please input your firstname")
+	fmt.Println("Please input your Firstname")
 	var Firstname string
 	fmt.Scanln(&Firstname)
 	for _, char := range Firstname {
@@ -15,7 +15,7 @@ func main() {
 			return
 		}
 	}
-	fmt.Println("Please input your lastname")
+	fmt.Println("Please input your Lastname")
 	var Lastname string
 	fmt.Scanln(&Lastname)
 	for _, char := range Lastname {
@@ -26,9 +26,9 @@ func main() {
 		}
 	}
 	fmt.Println("Admin Password Required")
-	var Password string
+	var Password int
 	fmt.Scanln(&Password)
-	if Password != "12345" {
+	if len(fmt.Sprintf("%d", Password)) != 6 {
 		fmt.Println("OH SNAP❌ Password is incorrect")
 		return
 	}
