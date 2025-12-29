@@ -32,10 +32,13 @@ func main() {
 		fmt.Println("OH SNAP❌ Password is incorrect")
 		return
 	}
-
 	fmt.Printf("SPECIAL GUEST DETECTED! Hello %s %s!,WELCOME TO 𝗛 𝗘 𝗔 𝗩 𝗘 𝗡 👑🕊️ \n", Firstname, Lastname)
 
+	fmt.Println("To continue your journey please verify your email")
+	var email string
+	fmt.Scanln(&email)
 }
+
 
 // func main() {
 // 	fmt.Print("Please, input your name: ")
