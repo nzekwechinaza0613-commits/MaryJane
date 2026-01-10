@@ -5,38 +5,44 @@ import (
 )
 
 func main() {
-	fmt.Println("Please input your Firstname")
+	fmt.Println("PLEASE ENTER YOUR DETAILS TO PROCEED")
+	fmt.Println("INPUT YOUR FIRSTNAME")
+	start1:
 	var Firstname string
 	fmt.Scanln(&Firstname)
 	for _, char := range Firstname {
 		if (char >= 'A' && char <= 'Z') || (char >= 'a' && char <= 'z') == true {
 		} else {
 			fmt.Println("ERROR; ONLY ALPHABETS ARE ALLOWED❗❗❗")
-			return
+			fmt.Println("TRY AGAIN")
+			fmt.Println("PLEASE RE-ENTER YOUR FIRSTNAME")
+			goto start1
 		}
 	}
-	fmt.Println("Please input your Lastname")
+	fmt.Println("PLEASE ENTER YOUR LASTNAME")
+	start2:
 	var Lastname string
 	fmt.Scanln(&Lastname)
 	for _, char := range Lastname {
 		if (char >= 'A' && char <= 'Z') || (char >= 'a' && char <= 'z') == true {
 		} else {
 			fmt.Println("ERROR; ONLY ALPHABETS ARE ALLOWED❗❗❗.")
-			return
+			fmt.Println("TRY AGAIN")
+			fmt.Println("PLEASE RE-ENTER YOUR LASTNAME")
+			goto start2
 		}
 	}
-	fmt.Println("Admin Password Required")
+	fmt.Println("ADMIN PASSWORD REQUIRED TO PROCEED")
 	var Password int
 	fmt.Scanln(&Password)
 	if len(fmt.Sprintf("%d", Password)) != 6 {
-		fmt.Println("OH SNAP❌ Password is incorrect")
+		fmt.Println("OH SNAP❌! . ACCESS DENIED🚫")
 		return
 	}
 	fmt.Printf("SPECIAL GUEST DETECTED! Hello %s %s!,WELCOME TO 𝗛 𝗘 𝗔 𝗩 𝗘 𝗡 👑🕊️ \n", Firstname, Lastname)
+	fmt.Println("YOU HAVE BEEN GRANTED ACCESS TO THE GATES OF 𝗛 𝗘 𝗔 𝗩 𝗘 𝗡 DO ENJOY YOUR STAY HERE💫")
 
-	fmt.Println("To continue your journey please verify your email")
-	var email string
-	fmt.Scanln(&email)
+
 }
 
 
