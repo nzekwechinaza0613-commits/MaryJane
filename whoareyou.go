@@ -36,7 +36,7 @@ func main() {
 	var Password int
 	fmt.Scanln(&Password)
 	if len(fmt.Sprintf("%d", Password)) != 6 {
-		fmt.Println("OH SNAP❌! . ACCESS DENIED🚫")
+		fmt.Println("OH SNAP❌❗ WRONG PASSWORD FORMAT. ACCESS DENIED🚫")
 		return
 	}
 	fmt.Printf("SPECIAL GUEST DETECTED! Hello %s %s!,WELCOME TO 𝗛 𝗘 𝗔 𝗩 𝗘 𝗡 👑🕊️ \n", Firstname, Lastname)
