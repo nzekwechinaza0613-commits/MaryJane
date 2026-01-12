@@ -55,10 +55,10 @@ func main() {
 	fmt.Println("YOU HAVE ", maxretry-attempt+1, "ATTEMPTS LEFT")
 	fmt.Scanln(&Password)
 	if len(Password) != 6 {
-		fmt.Println("OH SNAP❌❗ WRONG PASSWORD FORMAT. PASSWORD IS INCORRECT")
+		fmt.Println("OH SNAP❌❗ WRONG PASSWORD FORMAT. PASSWORD IS INCORRECT")a
 		fmt.Println("TRY AGAIN")
 		if attempt == maxretry {
-			fmt.Println("TOO MANY ATTEMPTS. ACCESS DENIED 🚫 INTRUDER ALERT.")
+			fmt.Println("ATTEMPTS EXHAUSTED. ACCESS DENIED🚫 YOU ARE NOT AUTHORIZED TO PROCEED. PROGRAM WILL TERMINATE NOW...")
 			fmt.Println("TERMINATING PROGRAM...")
 			fmt.Println("PROGRAM TERMINATED SUCCESSFULLY.")
 			return
@@ -70,13 +70,16 @@ func main() {
 		} else {
 			fmt.Println("PASSWORD MUST CONTAIN ONLY DIGITS❗❗❗")
 			return
-		}
+		} 
+	fmt.Println("PASSWORD ACCEPTED ✅") 
 	fmt.Printf("SPECIAL GUEST DETECTED! Hello %s %s!,WELCOME TO 𝗛 𝗘 𝗔 𝗩 𝗘 𝗡 👑🕊️ \n", Firstname, Lastname)
 	fmt.Println("YOU HAVE BEEN GRANTED ACCESS TO THE GATES OF 𝗛 𝗘 𝗔 𝗩 𝗘 𝗡 DO ENJOY YOUR STAY HERE💫")
 	return
+		}
 	}
 }
-}
+
+
 
 
 // func main() {
