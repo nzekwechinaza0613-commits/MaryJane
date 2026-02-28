@@ -1,27 +1,27 @@
 package main
 
 import (
-	"fmt"
-	"strings"
+"fmt"
+//	"strings"
 )
 
-func style(text, style, color string) string {
-	return style + color + text + "\033[0m"
-}
+//func style(text, style, color string) string {
+//	return style + color + text + "\033[0m"
+//}
 
-func containsAtSymbol(email string) bool {
-	return strings.Contains(email, "@")
-}
+//func containsAtSymbol(email string) bool {
+//	return strings.Contains(email, "@")
+//}
 
 const (
 	maxretry = 3
 )
 
-func main() {
+//func main() {
 
 	//FIRSNAME VERIFICATION
 
-	fmt.Println(" ")
+	//*fmt.Println(" ")
 	fmt.Println(style("********** IDENTITY VERIFICATION ***********", "\033[1;33m", ""))
 	fmt.Println(" ")
 	fmt.Println(style("PLEASE ENTER YOUR DETAILS TO PROCEED ", "\033[1;33m", ""))
@@ -176,7 +176,9 @@ start2:
 		fmt.Println(" ")
 		goto start3i
 		}
-	}
+	fmt.Println(style("***********THANK YOU FOR VERIFYING YOUR IDENTITY WITH US. HAVE A GREAT DAY!***********", "\033[1;32m", ""))
+	fmt.Println(" ")
+//}
 
 
 
