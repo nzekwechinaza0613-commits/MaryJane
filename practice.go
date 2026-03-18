@@ -32,7 +32,7 @@ func main() {
 	fmt.Print("INPUT YOUR FIRSTNAME: ")
 start:
 	Firstname, _ := reader.ReadString('\n')
-	Firstname = strings.TrimSpace(strings.Title(Firstname))
+	Firstname = strings.TrimSpace(capitalize(Firstname))
 	if Firstname == "" {
 		fmt.Println(style("ERROR❗❗ FIRSTNAME CANNOT BE EMPTY", "\033[1;31m", ""))
 		fmt.Println(style("TRY AGAIN", "\033[1;31m", ""))
@@ -68,7 +68,7 @@ start:
 	fmt.Print("INPUT YOUR LASTNAME: ")
 start2:
 	Lastname, _ := reader2.ReadString('\n')
-	Lastname = strings.TrimSpace(strings.Title(Lastname))
+	Lastname = strings.TrimSpace(capitalize(Lastname))
 	if Lastname == "" {
 		fmt.Println(style("ERROR❗❗ LASTNAME CANNOT BE EMPTY", "\033[1;31m", ""))
 		fmt.Println(style("TRY AGAIN", "\033[1;31m", ""))
@@ -140,3 +140,11 @@ start2:
 	}
 
 }
+
+
+func capitalize(s string) string {
+	if s == 0 {
+		return s
+	}
+	return strings.ToUpper(string(s[0])) + strings.ToLower(string(s[1:]))
+}`
