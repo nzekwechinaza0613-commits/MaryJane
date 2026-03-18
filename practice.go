@@ -19,6 +19,14 @@ func containsAtSymbol(email string) bool {
 	return strings.Contains(email, "@")
 }
 
+func capitalize(s string) string {
+	if s == "" {
+		return s
+	}
+
+	return strings.ToUpper(string(s[0])) + strings.ToLower(string(s[1:]))
+}
+
 func main() {
 
 	//FIRSNAME VERIFICATION
@@ -56,7 +64,7 @@ start:
 			fmt.Println(style("TRY AGAIN", "\033[1;31m", ""))
 			fmt.Println(" ")
 			fmt.Print("PLEASE RE-ENTER YOUR FIRSTNAME: ")
-			continue
+			goto start
 		}
 	}
 
@@ -94,7 +102,7 @@ start2:
 			fmt.Println(style("TRY AGAIN", "\033[1;31m", ""))
 			fmt.Println(" ")
 			fmt.Print("PLEASE RE-ENTER YOUR LASTNAME: ")
-			continue
+			goto start2
 		}
 	}
 
@@ -114,6 +122,7 @@ start2:
 	for attempt <= maxretries {
 		fmt.Println(style("PLEASE ENTER YOUR ADMIN PASSWORD: ", "\033[1;33m", ""))
 
+	start3:
 		Password, _ := reader3.ReadString('\n')
 		Password = strings.TrimSpace(Password)
 
@@ -121,30 +130,31 @@ start2:
 			fmt.Println("PASSOWRD CANNOT BE LEFT EMPTY")
 			fmt.Println("PLEASE TRY AGAIN")
 			fmt.Println("RE-ENTER YOUR ADMIN PASSWORD")
-			continue
+			goto start3
 		}
+
+		// if len(Password) < 8 {
+		// 	fmt.Println(style("PASSWORD SHOULD BE AT LEAST EIGHT CHARACTER LONG", "\033[1;31m", ""))
+		// 	fmt.Println(style("TRY AGAIN", "\033[1;31m", ""))
+		// 	fmt.Println(" ")
+		// 	goto start3
+		// }
 
 		if strings.Contains(Password, " ") {
 			fmt.Println("PASSWORD CANNOT CONTAIN SPACES")
 			fmt.Println("PLEASE TRY AGAIN")
 			fmt.Println("RE-ENTER YOUR ADMIN PASSWORD")
-			continue
+			goto start3
 		}
 
-		fmt.Printf("INCORRECT PASSWORD. ATTEMPTS REMAINING: %d\n", maxretries-attempt)
+		fmt.Printf(style("INCORRECT PASSWORD. YOU HAVE %d ATTEMPTS REMAINING\n", "\033[1;31m", ""), maxretries-attempt)
 		attempt++
-	}
 
-	if attempt == maxretries {
-		fmt.Println(style("TO MANY FAILED ATTEMPTS. ACCESS DENIED🚫 YOU ARE NOT AUTHORIZED TO PROCEED. PROGRAM WILL TERMINATE NOW...", "\033[1;5;31m", ""))
+		if attempt > maxretries {
+			fmt.Println(style("TO MANY FAILED ATTEMPTS. ACCESS DENIED 🚫 YOU ARE NOT AUTHORIZED TO PROCEED. PROGRAM WILL TERMINATE NOW...", "\033[1;5;31m", ""))
+			return
+		}
+
 	}
 
 }
-
-
-func capitalize(s string) string {
-	if s == 0 {
-		return s
-	}
-	return strings.ToUpper(string(s[0])) + strings.ToLower(string(s[1:]))
-}`
