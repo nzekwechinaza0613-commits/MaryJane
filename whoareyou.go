@@ -1,8 +1,8 @@
 package main
 
 import (
-"fmt"
-//	"strings"
+	"fmt"
+	//	"strings"
 )
 
 //func style(text, style, color string) string {
@@ -17,7 +17,7 @@ const (
 	maxretry = 3
 )
 
-//func main() {
+func min() {
 
 	//FIRSNAME VERIFICATION
 
@@ -118,14 +118,12 @@ start2:
 			fmt.Println(style("|></></></></></></></></></></></></></></></></></></></></><|", "\033[1;30m", ""))
 			fmt.Println(" ")
 
-
-
 		}
 		break
 	}
 	fmt.Println(style("***********TO CONTINUE WITH US CHOOSE A METHOD OF COMMUNICATION***********", "\033[1;32m", ""))
 	fmt.Println("")
-	start3i:
+start3i:
 	fmt.Println(style("1. EMAIL", "\033[1;33m", ""))
 	fmt.Println(style("2. PHONE NUMBER", "\033[1;33m", ""))
 	fmt.Println("")
@@ -135,7 +133,7 @@ start2:
 	switch option {
 	case 1:
 		fmt.Print("PLEASE ENTER YOUR EMAIL ADDRESS: ")
-		start3:
+	start3:
 		var email string
 		fmt.Scanln(&email)
 		if email == "" || email == " " {
@@ -152,35 +150,33 @@ start2:
 		fmt.Println(style("THANK YOU FOR PROVIDING YOUR EMAIL ADDRESS. WE WILL CONTACT YOU SOON.", "\033[1;32m", ""))
 	case 2:
 		fmt.Print("PLEASE ENTER YOUR PHONE NUMBER: ")
-		start4:
+	start4:
 		var phone string
 		fmt.Scanln(&phone)
 		for _, num := range phone {
 			if num >= '0' && num <= '9' {
 				continue
-				
+
 			} else {
 				fmt.Println(style("INVALID PHONE NUMBER. ONLY DIGITS ARE ALLOWED.", "\033[1;31m", ""))
 				fmt.Print("PLEASE RE-ENTER YOUR PHONE NUMBER: ")
 				goto start4
 			}
 		}
-			if len(phone) < 7 || len(phone) > 15 {
-					fmt.Println(style("INVALID PHONE NUMBER LENGTH. PLEASE ENTER A VALID PHONE NUMBER.", "\033[1;31m", ""))
-					fmt.Print("PLEASE RE-ENTER YOUR PHONE NUMBER: ")
-					goto start4
-				}
-				fmt.Println(style("THANK YOU FOR PROVIDING YOUR PHONE NUMBER. WE WILL CONTACT YOU SOON.", "\033[1;32m", ""))
+		if len(phone) < 7 || len(phone) > 15 {
+			fmt.Println(style("INVALID PHONE NUMBER LENGTH. PLEASE ENTER A VALID PHONE NUMBER.", "\033[1;31m", ""))
+			fmt.Print("PLEASE RE-ENTER YOUR PHONE NUMBER: ")
+			goto start4
+		}
+		fmt.Println(style("THANK YOU FOR PROVIDING YOUR PHONE NUMBER. WE WILL CONTACT YOU SOON.", "\033[1;32m", ""))
 	default:
 		fmt.Println(style("INVALID OPTION. PLEASE SELECT A VALID OPTION.", "\033[1;31m", ""))
 		fmt.Println(" ")
 		goto start3i
-		}
+	}
 	fmt.Println(style("***********THANK YOU FOR VERIFYING YOUR IDENTITY WITH US. HAVE A GREAT DAY!***********", "\033[1;32m", ""))
 	fmt.Println(" ")
-//}
-
-
+}
 
 // func main() {
 // 	fmt.Print("Please, input your name: ")
