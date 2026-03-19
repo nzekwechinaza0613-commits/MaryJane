@@ -123,87 +123,74 @@ start2:
 		fmt.Println(style("PLEASE ENTER YOUR ADMIN PASSWORD: ", "\033[1;33m", ""))
 
 	start3:
-		Password, _ := reader3.ReadString('\n')
-		Password = strings.TrimSpace(Password)
-
-		if Password == "" {
-			fmt.Println("PASSOWRD CANNOT BE LEFT EMPTY")
-			fmt.Println("PLEASE TRY AGAIN")
-			fmt.Println("RE-ENTER YOUR ADMIN PASSWORD")
+	for attempts := 1; attempts <= max; attempts++ {
+	fmt.Println(style("PLEASE ENTER YOUR ADMIN PASSWORD: ", "\033[1;33m", ""))
+	fmt.Println("YOU HAVE", max - attempts+1, "ATTEMPT(S) LEFT")
+	return
+	}
+	password, _ := reader3.ReadString('\n')
+	password = strings.TrimSpace(password)
+	if len(password) < 8 {
+			fmt.Println(style("ERROR❗❗ PASSWORD MUST BE AT LEAST 8 CHARACTERS LONG", "\033[1;31m", ""))
+			fmt.Println(style("TRY AGAIN", "\033[1;31m", ""))
+			fmt.Println(" ")
 			goto start3
 		}
-
-		// if len(Password) < 8 {
-		// 	fmt.Println(style("PASSWORD SHOULD BE AT LEAST EIGHT CHARACTER LONG", "\033[1;31m", ""))
-		// 	fmt.Println(style("TRY AGAIN", "\033[1;31m", ""))
-		// 	fmt.Println(" ")
-		// 	goto start3
-		// }
-
-		if strings.Contains(Password, " ") {
-			fmt.Println("PASSWORD CANNOT CONTAIN SPACES")
-			fmt.Println("PLEASE TRY AGAIN")
-			fmt.Println("RE-ENTER YOUR ADMIN PASSWORD")
-			goto start3
-		}
-
-		fmt.Printf(style("INCORRECT PASSWORD. YOU HAVE %d ATTEMPTS REMAINING\n", "\033[1;31m", ""), maxretries-attempt)
-		attempt++
-
-		if attempt > maxretries {
-			fmt.Println(style("TO MANY FAILED ATTEMPTS. ACCESS DENIED 🚫 YOU ARE NOT AUTHORIZED TO PROCEED. PROGRAM WILL TERMINATE NOW...", "\033[1;5;31m", ""))
+	if attempts == max {
+		fmt.Println(style("YOU HAVE EXCEEDED THE MAXIMUM NUMBER OF ATTEMPTS. ACCESS DENIED.", "\033[1;31m", ""))
+			fmt.Println(style("PLEASE CONTACT THE ADMINISTRATOR FOR ASSISTANCE", "\033[1;31m", ""))
+			fmt.Println(" ")
 			return
 		}
-
-		var hasUpper bool
-		var hasDigit bool
-		var hasLower bool
-
-		for _, char := range Password {
-
-			if char >= 'A' || char <= 'Z' {
-				hasUpper = true
-			} else {
-				fmt.Println("PASSWORD MUST CONTAIN AT LEAST ONE UPPERCASE LETTER")
-				fmt.Println("TRY AGAIN")
-				fmt.Println(" ")
-				goto start3
-			}
-
-			if char >= '0' || char <= '9' {
-				hasDigit = true
-			} else {
-				fmt.Println("PASSWORD MUST CONTAIN AT LEAST ONE DIGIT")
-				fmt.Println("TRY AGAIN")
-				fmt.Println(" ")
-				goto start3
-			}
-
-			if char >= 'a' || char <= 'z' {
-				hasLower = true
-			} else {
-				fmt.Println("PASSWORD MUST CONTAIN ATLEAST ONE LOWERCASE LETTER")
-				fmt.Println("TRY AGAIN")
-				fmt.Println(" ")
-				goto start3
-			}
-		}
-		fmt.Println("COMFIRM YOUR PASSWORD: ")
-		start4 :
-		var comfirmpassword string
-		fmt.Scanln(&comfirmpassword)
-		if Password != comfirmpassword {
-			fmt.Println("PASSWORD DOES NOT MATCH")
-			fmt.Println("TRY AGAIN")
-			fmt.Println("RE-COMFIRM YOUR PASSWORD")
-			fmt.Println(" ")
-			goto start4
-			
-		}
-
-		
-
-
+		continue
 	}
+	Password, _ := reader3.ReadString('\n')
+	Password = strings.TrimSpace(Password)
+	if strings.Contains(Password, " ") || Password == "" {
+		fmt.Println(style("ERROR❗❗ PASSWORD CANNOT BE EMPTY OR CONTAIN SPACES", "\033[1;31m", ""))
+		fmt.Println(style("TRY AGAIN", "\033[1;31m", ""))
+		fmt.Println(" ")
+		goto start3
+	}
+var hasUpper bool
+var hasLower bool
+var hasNumber bool
+var hasSymbol bool
+
+	for _, char := range Password {
+
+		if char >= 'A' && char <= 'Z' {
+			hasUpper = true
+		}
+
+		if char >= 'a' && char <= 'z' {
+			hasLower = true
+		}
+
+		if char >= '0' && char <= '9' {
+			hasNumber = true
+		}
+
+		if char == '!' || char == '@' || char == '#' {
+			hasSymbol = true
+		}
+		if !hasUpper || !hasLower || !hasNumber || !hasSymbol {
+		fmt.Println(style("PASSWORD IS TOO WEAK", "\033[1;31m", ""))
+		fmt.Println(style("TRY AGAIN", "\033[1;31m", ""))
+		fmt.Println(" ")
+		goto start3
+		}
+
+	reader4 := bufio.NewReader(os.Stdin)
+	fmt.Print(style("CONFIRM PASSWORD: ", "\033[1;33m", ""))
+	confirm, _ := reader4.ReadString('\n')
+	confirm = strings.TrimSpace(confirm)
+		if Password != confirm {
+			fmt.Println(style("PASSWORDS DO NOT MATCH", "\033[1;31m", ""))
+			fmt.Println(style("TRY AGAIN", "\033[1;31m", ""))
+			goto start3
+		}
+	}
+}
 
 }
