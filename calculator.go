@@ -15,11 +15,8 @@ func squareRoot(a float64) float64 {
 
 		return 0
 	}
-
 	n := a
-
 	for i := 0; i < 10; i++ {
-
 		n = (n + a / n) / 2
 	}
 	return n
@@ -36,7 +33,7 @@ start :
 	var first_value string
 	fmt.Scanln(&first_value)
 
-	num1, err1 := strconv.Atoi(first_value)
+	num1, err1 := strconv.ParseFloat(first_value, 64)
 
 	if err1 != nil {
 		fmt.Println(style("VALUE MUST BE AN INTERGER", "\033[1;31m", ""))
@@ -55,7 +52,7 @@ start2 :
 	var second_value string
 	fmt.Scanln(&second_value) 
 
-	num2, err2 := strconv.Atoi(second_value)
+	num2, err2 := strconv.ParseFloat(second_value, 64)
 
 	if err2 != nil {
 		fmt.Println(style("VALUE MUST BE AN INTERGER", "\033[1;31m", ""))
@@ -65,19 +62,17 @@ start2 :
 	}
 	
 	if sign == "+" {
-		fmt.Printf("%v %s %v = %v\n", num1, sign, num2, num1 + num2)
+		fmt.Printf("%.2f %s %.2f = %v\n", num1, sign, num2, num1 + num2)
 	} else if sign == "-" {
-		fmt.Printf("%v %s %v = %v\n", num1, sign, num2, num1 - num2)
+		fmt.Printf("%.2f %s %.2f = %v\n", num1, sign, num2, num1 - num2)
 	} else if sign == "*" {
-		fmt.Printf("%v %s %v = %v\n", num1, sign, num2, num1 * num2)
+		fmt.Printf("%.2f %s %.2f = %v\n", num1, sign, num2, num1 * num2)
 	} else if sign == "/" {
-		fmt.Printf("%v %s %v = %v\n", num1, sign, num2, num1 / num2)
+		fmt.Printf("%.2f %s %.2f = %v\n", num1, sign, num2, num1 / num2)
 	} else if sign == "%" {
-		fmt.Printf("%v %s %v = %v\n", num1, sign, num2, num1 % num2)
+		fmt.Printf("%v %s %v = %v\n", num1, sign, num2, int(num1) % int(num2))
 	} else if sign == "sqrt" {
-		fmt.Printf("√%v = %v\n", num1, squareRoot(float64(num1)))
-	} else if sign == "^" {
-		fmt.Printf("%v %s %v = %v\n", num1, sign, num2, num1 ^ num2)
+		fmt.Printf("√%.2f = %.2f\n", num1, squareRoot(num1))
 	} else {
 		fmt.Println(style("INVALID ARITHEMETIC SYNTAX", "\033[1;31m", ""))
 		fmt.Println(style("TRY AGAIN", "\033[1;31m", ""))
